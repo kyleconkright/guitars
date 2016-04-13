@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="testStore">
+
+<head>
+	<title>Angular Test</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+</head>
+
+<body ng-controller="StoreController as store">
+
+	<header>
+		<h1>Angular &vzigzag; Flexbox</h1>
+	</header>
+
+	<div id="container">
+		<div id="products">
+			<div class="product" ng-repeat="product in store.products">
+				<div class="image"></div>
+				<h1>{{product.name}}</h1>
+				<p class="price">{{product.price | currency}}</p>
+				<p class="description">{{product.description}}</p>
+				<ul class="more">
+					<li><a href="#">Description</a></li>
+					<li><a href="#">Specs</a></li>
+					<li><a href="#">Reviews</a></li>
+				</ul>
+				<button ng-show="product.canPurchase">Buy it</button>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

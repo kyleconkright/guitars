@@ -1,0 +1,61 @@
+$margin: 2%;
+$blue: #e7f4fc;
+
+* {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	box-sizing: border-box;
+	font-family: inherit;
+}
+
+body {
+	font-family: 'Varela Round', sans-serif;
+	color: #333;
+	background: #fefefe;
+}
+
+header {
+	background: $blue;
+	color: #222;
+	text-transform: uppercase;
+	padding: $margin;
+}
+
+button {
+	border: none;
+	background: $blue;
+	padding: $margin*2;
+	margin: $margin 0;
+	display: block;
+	width: 100%;
+	font-size: 1.1em;
+	cursor: pointer;
+}
+
+#container {
+	padding: $margin 0;
+}
+
+#products {
+	display: flex;
+	flex-wrap: wrap;
+	.product {
+		border-top: 2px solid #999;
+		margin: $margin;
+		padding: $margin 0 0;
+		flex: 1;
+		flex-basis: 21%;
+		.image {
+			width: 200px;
+			margin: $margin auto;
+			background: #f6f6f6;
+			border-radius: 100%;
+			&:before {
+			    content: "";
+			    display: block;
+			    padding-top: 100%;
+			}
+		}
+	}
+}
