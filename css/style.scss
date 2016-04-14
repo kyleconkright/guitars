@@ -1,5 +1,6 @@
 $margin: 2%;
 $blue: #e7f4fc;
+$lightblue: #d0dce3;
 
 * {
 	margin: 0;
@@ -24,6 +25,15 @@ header {
 	padding: $margin;
 }
 
+.animated-border {
+	background: $lightblue;
+	height: 2px;
+	width: 0%;
+	position: relative;
+	margin: 0 auto;
+	top: 0;
+}
+
 button {
 	border: none;
 	background: $blue;
@@ -33,16 +43,11 @@ button {
 	width: 100%;
 	font-size: 1.1em;
 	cursor: pointer;
-	& ~ .button-border {
-		height: 2px;
-		background: rgba(0,0,0,.1);
+	& ~ .animated-border {
 		top: -2px;
-		position: relative;
-		width: 0%;
-		margin: 0 auto;
 		transition: width .2s;
 	}
-	&:hover ~ .button-border {
+	&:hover ~ .animated-border {
 		width: 100%;
 	}
 }
@@ -50,27 +55,56 @@ button {
 
 
 #container {
-	padding: $margin 0;
+	padding: 0 0 $margin 0;
 }
 
 #products {
 	display: flex;
 	flex-wrap: wrap;
 	.product {
-		border-top: 2px solid #999;
-		margin: $margin;
+		margin: $margin * 2;
 		padding: $margin 0 0;
 		flex: 1;
 		flex-basis: 21%;
 		.image {
 			width: 200px;
-			margin: $margin auto;
+			margin: $margin auto $margin*4;
 			background: #f6f6f6;
 			border-radius: 100%;
 			&:before {
 			    content: "";
 			    display: block;
 			    padding-top: 100%;
+			}
+		}
+		.name-price {
+			display: flex;
+			align-items: center;
+			* {
+				flex: 1;
+			}
+			p.price {
+				text-align: right;
+			}
+		}
+		ul.more {
+			display: flex;
+			margin: $margin 0 $margin*3;
+			font-size: .9em;
+			li {
+				flex: 1;
+				text-align: center;
+				&:first-child {
+					text-align: left;
+				}
+				&:last-child {
+					text-align: right;
+				}
+				&.active .animated-border {
+					width: 100%;
+					top: 4px;
+					transition: width .2s;
+				}
 			}
 		}
 	}

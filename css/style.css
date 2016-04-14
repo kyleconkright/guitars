@@ -18,6 +18,14 @@ header {
   text-transform: uppercase;
   padding: 2%; }
 
+.animated-border {
+  background: #d0dce3;
+  height: 2px;
+  width: 0%;
+  position: relative;
+  margin: 0 auto;
+  top: 0; }
+
 button {
   border: none;
   background: #e7f4fc;
@@ -27,35 +35,51 @@ button {
   width: 100%;
   font-size: 1.1em;
   cursor: pointer; }
-  button ~ .button-border {
-    height: 2px;
-    background: rgba(0, 0, 0, 0.1);
+  button ~ .animated-border {
     top: -2px;
-    position: relative;
-    width: 0%;
-    margin: 0 auto;
     transition: width .2s; }
-  button:hover ~ .button-border {
+  button:hover ~ .animated-border {
     width: 100%; }
 
 #container {
-  padding: 2% 0; }
+  padding: 0 0 2% 0; }
 
 #products {
   display: flex;
   flex-wrap: wrap; }
   #products .product {
-    border-top: 2px solid #999;
-    margin: 2%;
+    margin: 4%;
     padding: 2% 0 0;
     flex: 1;
     flex-basis: 21%; }
     #products .product .image {
       width: 200px;
-      margin: 2% auto;
+      margin: 2% auto 8%;
       background: #f6f6f6;
       border-radius: 100%; }
       #products .product .image:before {
         content: "";
         display: block;
         padding-top: 100%; }
+    #products .product .name-price {
+      display: flex;
+      align-items: center; }
+      #products .product .name-price * {
+        flex: 1; }
+      #products .product .name-price p.price {
+        text-align: right; }
+    #products .product ul.more {
+      display: flex;
+      margin: 2% 0 6%;
+      font-size: .9em; }
+      #products .product ul.more li {
+        flex: 1;
+        text-align: center; }
+        #products .product ul.more li:first-child {
+          text-align: left; }
+        #products .product ul.more li:last-child {
+          text-align: right; }
+        #products .product ul.more li.active .animated-border {
+          width: 100%;
+          top: 4px;
+          transition: width .2s; }

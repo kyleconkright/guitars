@@ -19,16 +19,44 @@
 		<div id="products">
 			<div class="product" ng-repeat="product in store.products">
 				<div class="image"></div>
-				<h1>{{product.name}}</h1>
-				<p class="price">{{product.price | currency}}</p>
-				<p class="description">{{product.description}}</p>
-				<ul class="more">
-					<li><a href="#">Description</a></li>
-					<li><a href="#">Specs</a></li>
-					<li><a href="#">Reviews</a></li>
-				</ul>
+				<div class="name-price">
+					<h1>{{product.name}}</h1>
+					<p class="price">{{product.price | currency}}</p>
+				</div>
+				
+				<section ng-controller="PanelController as panel">
+
+					<ul class="more">
+						<li ng-class="{active:panel.isSelected(1)}">
+							<a href ng-click="panel.selectBox(1)">Description</a>
+							<div class="animated-border"></div>
+						</li>
+						
+						<li ng-class="{active:panel.isSelected(2)}">
+							<a href ng-click="panel.selectBox(2)">Specs</a>
+							<div class="animated-border"></div>
+						</li>
+
+						<li ng-class="{active:panel.isSelected(3)}">
+							<a href ng-click="panel.selectBox(3)">Reviews</a>
+							<div class="animated-border"></div>
+						</li>
+					</ul>
+
+					<div id="panels" >
+						<div class="panel" ng-show="panel.isSelected(1)">
+							<p>{{product.description}}</p>
+						</div>
+						<div class="panel" ng-show="panel.isSelected(2)">
+							<p>no specs</p>
+						</div>
+						<div class="panel" ng-show="panel.isSelected(3)">
+							<p>no reviews</p>
+						</div>
+					</div><!-- #panels -->
+				</section>
 				<button ng-show="product.canPurchase">Buy it</button>
-				<div class="button-border"></div>
+				<div class="animated-border"></div>
 			</div>
 		</div>
 	</div>
